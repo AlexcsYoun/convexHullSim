@@ -9,6 +9,7 @@ class Orientation extends Action {
     this.c = c;
   }
   
+  
   public float getResult(){
     PVector lineA = PVector.sub(b.getPos(),c.getPos());
     PVector lineB = PVector.sub(b.getPos(),a.getPos());
@@ -17,17 +18,17 @@ class Orientation extends Action {
   }
   
   @Override
-  public void render(){
+  public void simulate(){
     PVector pA = a.getPos();
     PVector pB = b.getPos();
     PVector pC = c.getPos();
-    System.out.println(String.format("x: %f y:%f", pA.x, pA.y));
+    
+    
     float res = this.getResult();
-    strokeWeight(6);
-    stroke(255);
+    strokeWeight(4);
+    stroke(226,187,121);
 
     line(pA.x, pA.y, pB.x, pB.y);
-    System.out.println(res);
     if(res > 0){
       stroke(200,0,0);
     }
@@ -38,6 +39,9 @@ class Orientation extends Action {
       stroke(0,0,200);
     }
     line(pB.x, pB.y, pC.x, pC.y);
+    
+    c.compare();
   };
+  
   
 }

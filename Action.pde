@@ -1,4 +1,7 @@
 abstract class Action{
   
-  public abstract void render();
+  
+  public abstract void simulate();
+  
+  
 }

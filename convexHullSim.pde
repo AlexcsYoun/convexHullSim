@@ -1,44 +1,56 @@
 import java.util.Random;
+
 ArrayList<Point> points;
 Random rand;
 int nPoints = 100;
 int iter = 0;
+
+int screenSize = 600;
+
+ConvexHullAlgorithm alg;
+void settings(){
+  size(screenSize,screenSize);
+}
+
 void setup(){
+  
   rand = new Random();
-  size(600,600);
+  
   background(0,0,0);
   points = new ArrayList<Point>();
-  nPoints = 100;
   
+  
+  PVector centre = new PVector((float)width/2, (float)height/2);
   for( int i =0; i< nPoints; i++){
     strokeWeight(8);
     stroke(255);
-    int x = rand.nextInt((int)(width*0.9)) + (int)(width*0.05);
-    int y = rand.nextInt((int)(height*0.9))+ (int)(height*0.05);
+    float mag = rand.nextInt(width) *0.45;
+    PVector np = PVector.random2D().mult(mag);
+    np = np.add(centre);
     // note y axis is reversed so orientation is maintained
-    point(x,y);
-    points.add(new Point(x,y));
-    
+    point(np.x,np.y);
+    points.add(new Point(np.x, np.y));
   }
   
   for(Point p: points){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
+ 
    
-  Orientation orientTest = new Orientation(points.get(0), points.get(1), points.get(2));
-  orientTest.render();
+  alg = new QuickHull();
+  frameRate(60);
+  
+  alg.execute(points);
   
 }
 
 
 void draw(){
   background(0,0,0);
+  alg.render();
   renderPoints();
-  Orientation orientTest = new Orientation(points.get(0), points.get(1), points.get(iter));
-  orientTest.render();
-  iter += 1;
-  iter %= nPoints;
   
+
 }
 void renderPoints(){
   for(Point p: points){
