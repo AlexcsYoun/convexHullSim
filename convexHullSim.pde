@@ -7,6 +7,8 @@ int iter = 0;
 
 int screenSize = 600;
 
+Pulse beep = new Pulse(this);
+int beepTime = 0;
 
 
 ConvexHullAlgorithm alg;
@@ -48,6 +50,12 @@ void setup(){
 
 
 void draw(){
+  if(millis() > beepTime){
+    beep.stop();
+  }
+  else{
+    beep.play();
+  }
   background(0,0,0);
   alg.render();
   renderPoints();
@@ -65,9 +73,7 @@ SoundFile generateSound(String filePath){
 }
 
 
-void Beep(float freq){
-  TriOsc sine = new TriOsc(this);
-  Env env = new Env(this);
-  sine.play(freq,0.5);
-  env.play(sine,0.025,0.1,0.9,0.3);
+void Beep(float freq,int time){
+  beepTime = time + millis();
+  beep.freq(freq);
 }
