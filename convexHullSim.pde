@@ -57,3 +57,7 @@ void renderPoints(){
     p.render();   
   }
 }
+
+SoundFile generateSound(String filePath){
+  return new SoundFile(this, filePath);
+}

@@ -1,11 +1,9 @@
 import processing.sound.*;
-SoundFile file;
    
 class AddHullPoint extends Action{
   private Hull hull;
   private Point p;
   private Integer pos;
-  public static SoundFile file = new SoundFile(this, "deep-ass-meow.mp3");
  
  
   AddHullPoint(Hull hull, Point p){
@@ -27,7 +25,9 @@ class AddHullPoint extends Action{
     else{
       hull.pushPoint(p);
     }
-   
+    SoundFile sound = generateSound("deep-ass-meow.mp3");
+    sound.play();
+    sound.removeFromCache();
   }
 
 }
