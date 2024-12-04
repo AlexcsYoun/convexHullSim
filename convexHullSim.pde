@@ -7,6 +7,8 @@ int iter = 0;
 
 int screenSize = 600;
 
+
+
 ConvexHullAlgorithm alg;
 void settings(){
   size(screenSize,screenSize);
@@ -38,7 +40,7 @@ void setup(){
  
    
   alg = new QuickHull();
-  frameRate(60);
+  frameRate(20);
   
   alg.execute(points);
   
@@ -60,4 +62,12 @@ void renderPoints(){
 
 SoundFile generateSound(String filePath){
   return new SoundFile(this, filePath);
+}
+
+
+void Beep(float freq){
+  TriOsc sine = new TriOsc(this);
+  Env env = new Env(this);
+  sine.play(freq,0.5);
+  env.play(sine,0.025,0.1,0.9,0.3);
 }

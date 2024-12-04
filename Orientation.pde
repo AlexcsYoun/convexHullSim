@@ -1,3 +1,6 @@
+import processing.sound.*;
+
+
 class Orientation extends Action {
   private Point a;
   private Point b;
@@ -41,6 +44,9 @@ class Orientation extends Action {
     line(pB.x, pB.y, pC.x, pC.y);
     
     c.compare();
+    
+    float freq = map(res, -(width*height),width*height,100,1100);
+    Beep(freq);
   };
   
   
