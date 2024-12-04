@@ -37,7 +37,6 @@ class JarvisMarch extends ConvexHullAlgorithm{
       prev = cur;
       Point cPoint = points.get(cur);
       if(cur == origin){
-        hull.setClosed(true);
         stay = false;
       }
       else{

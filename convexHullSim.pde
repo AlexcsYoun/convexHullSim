@@ -17,7 +17,6 @@ void settings(){
 }
 
 void setup(){
-  
   rand = new Random();
   
   background(0,0,0);
@@ -41,7 +40,7 @@ void setup(){
   }
  
    
-  alg = new QuickHull();
+  alg = new JarvisMarch();
   frameRate(20);
   
   alg.execute(points);
