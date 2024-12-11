@@ -4,6 +4,8 @@ ArrayList<Point> points;
 Random rand;
 int nPoints = 100;
 int iter = 0;
+Boolean distanceVary = true;
+
 
 int screenSize = 600;
 
@@ -27,7 +29,7 @@ void setup(){
   for( int i =0; i< nPoints; i++){
     strokeWeight(8);
     stroke(255);
-    float mag = rand.nextInt(width) *0.45;
+    float mag = distanceVary ?  rand.nextInt(width) *0.45 : width * 0.45;
     PVector np = PVector.random2D().mult(mag);
     np = np.add(centre);
     // note y axis is reversed so orientation is maintained
@@ -38,10 +40,9 @@ void setup(){
   for(Point p: points){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
- 
-   
-  alg = new JarvisMarch();
-  frameRate(20);
+  Sound.volume(0.01);
+  alg = new QuickHull();
+  frameRate(60);
   
   alg.execute(points);
   

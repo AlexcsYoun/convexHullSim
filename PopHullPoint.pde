@@ -1,0 +1,3 @@
+class PopPoint extends Action{
+
+}
