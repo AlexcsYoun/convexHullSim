@@ -14,7 +14,7 @@ class PolarSort implements Comparator<Point>{
        return -1;
      }
      if(right == origin){
-       return -1;
+       return 1;
      }
      
      
@@ -29,7 +29,7 @@ class PolarSort implements Comparator<Point>{
     
      }
      
-     return (orient.getResult() > 0) ? -1: 1;
+     return (orient.getResult() > 0) ? 1: -1;
      
   }
 }

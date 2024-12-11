@@ -21,6 +21,10 @@ class Point{
     return this.status;
   }
   
+  void reset(){
+    status = PointStatus.ACTIVE;
+  }
+  
   void delete(){
     status = PointStatus.DELETED;
   }
