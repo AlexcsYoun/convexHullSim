@@ -41,7 +41,7 @@ void setup(){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
   Sound.volume(0.01);
-  alg = new QuickHull();
+  alg = new MonotoneChain();
   frameRate(60);
   
   alg.execute(points);

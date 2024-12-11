@@ -31,7 +31,6 @@ class Hull{
   
   void complete(){
     complete = true;
-    closed = true;
   }
   
   void setClosed(boolean closed){
@@ -58,7 +57,7 @@ class Hull{
         prev = cur;
       }
       
-      if(closed || complete){
+      if(closed){
         PVector cur = points.get(0).getPos();
         line(prev.x, prev.y, cur.x, cur.y);
       }

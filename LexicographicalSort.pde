@@ -13,7 +13,7 @@ class LexicographicalSort implements Comparator<Point>{
       return -1;
     }
     else{
-      if(l.x == r.x && l.y < r.y){
+      if(l.x == r.x && l.y > r.y){
         return -1;
       }
       return 1;
