@@ -25,9 +25,14 @@ class AddHullPoint extends Action{
     else{
       hull.pushPoint(p);
     }
-    SoundFile sound = generateSound("deep-ass-meow.mp3");
+    SoundFile sound = generateSound("sounds/deep-ass-meow.mp3");
+
     sound.play();
+    sound.amp(0.1);
+    
     sound.removeFromCache();
+    
+    particles.push(new Particle("Added",p.getPos(),1000,0,255,0));
   }
 
 }

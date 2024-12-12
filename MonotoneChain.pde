@@ -50,7 +50,7 @@ class MonotoneChain extends ConvexHullAlgorithm{
     }
     
     super.pushAction(new CompleteHull(top, false));
-    
+
     
     for(int i = points.size()-1; i >=0; i--){
       Point p = points.get(i);
@@ -82,7 +82,7 @@ class MonotoneChain extends ConvexHullAlgorithm{
       super.pushAction(new AddHullPoint(bottom, p));
       
     }
-    
+
     super.pushAction(new CompleteHull(bottom, false));
     
     

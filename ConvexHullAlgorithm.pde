@@ -24,7 +24,7 @@ abstract class ConvexHullAlgorithm{
   public void render(){
     
     textSize(15);
-    fill(255);
+    fill(200);
     text(String.format("Algorithm: %s\nActions: %d",toString(),nextAction),20,20);
     if(nextAction < actions.size()){
       Action curAct = actions.get(nextAction);

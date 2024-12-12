@@ -45,7 +45,7 @@ class Orientation extends Action {
     
     c.compare();
     
-    float freq = map(c.getPos().x, 0,width,50,700);
+    float freq = map(c.getPos().x, 0,width,1,700);
     Beep(freq,100);
   };
   

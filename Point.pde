@@ -13,7 +13,7 @@ class Point{
   }
   
   PVector getPos(){
-    return this.pos;
+    return this.pos.copy();
   }
   
   
@@ -44,15 +44,15 @@ class Point{
     else if(status == PointStatus.COMPARING){
       status = PointStatus.ACTIVE;
       strokeWeight(8);
-      stroke(255);
-      fill(255,0);
+      stroke(200);
+      fill(200,0);
       ellipseMode(CENTER);
       circle(pos.x, pos.y, 15);
       
     }
     else{
       strokeWeight(2);
-      stroke(255);
+      stroke(200);
       point(pos.x, pos.y);
     }
     

@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.LinkedList;
 
 ArrayList<Point> points;
 Random rand;
@@ -13,8 +14,11 @@ Pulse beep = new Pulse(this);
 int beepTime = 0;
 
 
+LinkedList<Particle> particles = new LinkedList<Particle>();
+
+
 ConvexHullAlgorithm alg;
-void settings(){
+void settings(){         
   size(screenSize,screenSize);
 }
 
@@ -40,10 +44,10 @@ void setup(){
   for(Point p: points){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
-  Sound.volume(0.01);
-  alg = new MonotoneChain();
-  frameRate(60);
-  
+  Sound.volume(0.1);
+  alg = new JarvisMarch();
+  frameRate(120);
+  beep.amp(0.1);  
   alg.execute(points);
   
 }
@@ -56,15 +60,26 @@ void draw(){
   else{
     beep.play();
   }
-  background(0,0,0);
+  background(10,10,10);
   alg.render();
   renderPoints();
+  renderParticles();
   
 
 }
 void renderPoints(){
   for(Point p: points){
     p.render();   
+  }
+}
+
+void renderParticles(){
+  while(!particles.isEmpty() && !particles.peek().alive()){
+    particles.removeFirst();
+  }
+  
+  for(Particle p: particles){
+    p.render();
   }
 }
 

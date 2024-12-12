@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 class CompleteHull extends Action{
   private Hull hull;
   private boolean closed;
@@ -17,6 +19,9 @@ class CompleteHull extends Action{
   public void simulate(){
     hull.complete();
     hull.setClosed(closed);
+    SoundFile sound = generateSound("sounds/the weather outside is rizzy.mp3");
+    sound.play(1,1.0);
+    sound.removeFromCache();
   }
 
 } 
