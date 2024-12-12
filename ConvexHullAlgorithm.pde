@@ -21,14 +21,29 @@ abstract class ConvexHullAlgorithm{
     actions.add(action);
   }
   
-  public void render(){
+  public void forward(){
     if(nextAction < actions.size()){
-      Action curAct = actions.get(nextAction);
-      curAct.simulate();
+      Action nextAct = actions.get(nextAction);
+      nextAct.forward();
       nextAction++;
+    }    
+  }
+  
+  public void backward(){
+    if(nextAction > 0){
+        Action curAct = actions.get(nextAction-1);
+        curAct.backward();
+        nextAction--;      
     }
-    
-  };
+  }
+  
+  public void render(){
+    int i = nextAction % actions.size();
+    Action curAct = actions.get(i);
+    curAct.render();
+  
+  }
+  
     
   protected void incrementOperations(){
     comparisons++;

@@ -5,9 +5,15 @@ class DeletePoint extends Action{
     this.p = p;
   }
   
-  public void simulate(){
+  public void forward(){
     p.delete();
     particles.push(new Particle("DELETED",p.getPos(),1000,100,0,0));
 
   }
+  
+  public void backward(){
+    p.reset();
+  }
+  
+  public void render(){}
 }

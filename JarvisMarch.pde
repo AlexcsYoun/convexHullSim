@@ -49,7 +49,8 @@ class JarvisMarch extends ConvexHullAlgorithm{
   
   
   public void render(){
+    hull.render();
     super.render();
-    hull.render(); //<>//
+     //<>//
   }
 }

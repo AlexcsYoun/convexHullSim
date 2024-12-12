@@ -28,16 +28,22 @@ class Hull{
     return last;
   }
   
+  Point popPoint(int pos){
+    Point p = points.get(pos);
+    points.remove(pos);
+    return p;
+  }
   
-  void complete(){
-    complete = true;
+  
+  void setComplete(boolean complete){
+    this.complete = complete;
   }
   
   void setClosed(boolean closed){
     this.closed = closed;
   }
   
-  boolean getClosed(boolean closed){
+  boolean getClosed(){
     return closed;
   }
   

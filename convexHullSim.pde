@@ -20,6 +20,10 @@ ConvexHullAlgorithm alg;
 
 PFont titleFont; 
 
+boolean running = true;
+
+boolean spaceHeld = false;
+
 void settings(){         
   size(screenSize,screenSize);
 }
@@ -46,7 +50,7 @@ void setup(){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
   Sound.volume(0.1);
-  alg = new QuickHull();
+  alg = new MonotoneChain();
   frameRate(120);
   beep.amp(0.07);  
   alg.execute(points);
@@ -63,19 +67,57 @@ void draw(){
   else{
     beep.play();
   }
+
+  if(running){
+    alg.forward();
+  }
   background(250,250,250);
-  
-  textFont(titleFont,64);
-  fill(220,200);
-  textAlign(CENTER, CENTER);
-  text(alg.toString(),width/2,height/2);
-  fill(255,255);
+  renderTitle();
   alg.render();
   renderPoints();
   renderParticles();
   
 
 }
+
+void keyPressed(){
+  if(key == ' '){
+    if(!spaceHeld){
+      running = !running;
+      spaceHeld = true;
+    }
+    
+  }
+  if(key == CODED){
+    if(keyCode == LEFT){
+      running = false;
+      alg.backward();
+    }
+    if(keyCode == RIGHT){
+      running = false;
+      alg.forward();
+    }
+  }
+}
+
+
+void keyReleased(){
+  if(key == ' '){
+    spaceHeld = false;
+  }
+}
+
+
+
+
+void renderTitle(){
+  textFont(titleFont,64);
+  fill(220,200);
+  textAlign(CENTER, CENTER);
+  text(alg.toString(),width/2,height/2);
+  fill(255,255);
+}
+
 void renderPoints(){
   for(Point p: points){
     p.render();   

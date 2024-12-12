@@ -21,7 +21,19 @@ class Orientation extends Action {
   }
   
   @Override
-  public void simulate(){
+  public void forward(){
+    float freq = map(c.getPos().x, 0,width,1,700);
+    Beep(freq,100);
+  }
+  
+  @Override 
+  public void backward(){
+    float freq = map(c.getPos().x, width,0,1,700);
+    Beep(freq,100);
+  }
+  
+  @Override
+  public void render(){
     PVector pA = a.getPos();
     PVector pB = b.getPos();
     PVector pC = c.getPos();
@@ -45,9 +57,9 @@ class Orientation extends Action {
     
     c.compare();
     
-    float freq = map(c.getPos().x, 0,width,1,700);
-    Beep(freq,100);
-  };
+    
+    
+  }
   
   
 }

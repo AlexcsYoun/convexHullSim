@@ -94,7 +94,7 @@ class QuickHull extends ConvexHullAlgorithm{
   }
   
   public void render(){
-    super.render();
     hull.render();
+    super.render();
   }
 }

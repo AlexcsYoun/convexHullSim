@@ -10,7 +10,7 @@ class PopHullPoint extends Action{
   }
   
   
-  public void simulate(){
+  public void forward(){
     p = hull.popPoint();
     //SoundFile sound = generateSound("deep-ass-meow.mp3");
     //sound.play();
@@ -19,4 +19,10 @@ class PopHullPoint extends Action{
     particles.push(new Particle("REMOVED",p.getPos(),1000,255,0,0));
 
   }
+  
+  public void backward(){
+    hull.pushPoint(p);
+  }
+  
+  public void render(){}
 }

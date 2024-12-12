@@ -90,9 +90,10 @@ class MonotoneChain extends ConvexHullAlgorithm{
   
   @Override
   public void render(){
-    super.render();
     top.render();
     bottom.render();
+    super.render();
+
   }
   
 }

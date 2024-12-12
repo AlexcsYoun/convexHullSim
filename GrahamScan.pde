@@ -72,7 +72,8 @@ class GrahamScan extends ConvexHullAlgorithm{
   
   @Override
   public void render(){
-    super.render();
     hull.render();
+    super.render();
+    
   }
 }  
