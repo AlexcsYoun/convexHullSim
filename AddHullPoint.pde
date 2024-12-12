@@ -29,10 +29,8 @@ class AddHullPoint extends Action{
     particles.push(new Particle("ADDED",p.getPos(),1000,0,150,0));
     
     SoundFile sound = generateSound("sounds/deep-ass-meow.mp3");
-
     sound.play();
     sound.amp(0.15);
-    
     sound.removeFromCache();
 
   }
