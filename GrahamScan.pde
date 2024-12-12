@@ -11,7 +11,7 @@ class GrahamScan extends ConvexHullAlgorithm{
   public void execute(ArrayList<Point> points){
     Point origin = points.get(0);
     for(Point p: points){
-      if(p.less(origin)){
+      if(p.bottomPoint(origin)){
         origin = p;
       }
     }

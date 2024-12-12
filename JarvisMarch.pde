@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 class JarvisMarch extends ConvexHullAlgorithm{
   Hull hull = new Hull(false);
   
@@ -9,14 +11,7 @@ class JarvisMarch extends ConvexHullAlgorithm{
   @Override
   public void execute(ArrayList<Point> points){
     
-    int origin = 0;
-    
-    for(int i = 0; i < points.size(); i++){
-      Point p = points.get(i);
-      if(p.less(points.get(origin))){
-        origin = i;
-      }
-    }
+    int origin = points.indexOf(Collections.min(points));
     
     boolean stay = true;
     super.pushAction(new AddHullPoint(hull, points.get(origin)));

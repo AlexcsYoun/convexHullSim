@@ -3,7 +3,7 @@
 A rendered point in the simulation
 */
 
-class Point{
+class Point implements Comparable<Point>{
   private PVector pos;
   private PointStatus status = PointStatus.ACTIVE;
   
@@ -65,7 +65,7 @@ class Point{
   }
    
   /* returns true if current Point has greater y value than other, tie breaks by lower x value */
-  boolean less(Point other){
+  boolean bottomPoint(Point other){
     PVector oPos = other.getPos();
     if(pos.y > oPos.y){
       return true;
@@ -75,5 +75,23 @@ class Point{
     }
     
     return pos.x < oPos.x;
+  }
+  
+  public int compareTo(Point p){
+    PVector o = p.getPos();
+    
+    if(pos.x == o.x && pos.y == o.y){
+      return 0;
+    }
+    
+    if(pos.x < o.x){
+      return -1;
+    }
+    else{
+      if(pos.x == o.x && pos.y > o.y){
+        return -1;
+      }
+      return 1;
+    }  
   }
 }

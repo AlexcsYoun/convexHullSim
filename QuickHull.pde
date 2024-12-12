@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 class QuickHull extends ConvexHullAlgorithm{
   Hull hull = new Hull(true);
   
@@ -8,43 +10,33 @@ class QuickHull extends ConvexHullAlgorithm{
   
   @Override
   public void execute(ArrayList<Point> points){
-    Point p1 = points.get(0), p2 = points.get(0);
-    
-    for(Point p: points){
-      if(p.less(p1)){
-        p1 = p;
-      }
-      
-      if(p2.less(p)){
-        p2 = p;
-      }
-    
-   }
+    Point p1 = Collections.min(points), p2 = Collections.max(points);
    
-   super.pushAction(new AddHullPoint(hull, p1));
-   super.pushAction(new AddHullPoint(hull, p2));
+   
+    super.pushAction(new AddHullPoint(hull, p1));
+    super.pushAction(new AddHullPoint(hull, p2));
 
-   
-   ArrayList<Point> upper = new ArrayList<Point>();
-   ArrayList<Point> lower= new ArrayList<Point>();
-   for(Point p: points){
-     Orientation orient = new Orientation(p1, p2, p);
-     super.pushAction(orient);
-     if(orient.getResult() < 0){
-       lower.add(p);
+ 
+     ArrayList<Point> upper = new ArrayList<Point>();
+     ArrayList<Point> lower= new ArrayList<Point>();
+     for(Point p: points){
+       Orientation orient = new Orientation(p1, p2, p);
+       super.pushAction(orient);
+       if(orient.getResult() < 0){
+         lower.add(p);
+       }
+       else if(orient.getResult()>0){
+         upper.add(p);
+       }
+       else if(!(p == p1 || p == p2)){
+         super.pushAction(new DeletePoint(p));
+       }
      }
-     else if(orient.getResult()>0){
-       upper.add(p);
-     }
-     else if(!(p == p1 || p == p2)){
-       super.pushAction(new DeletePoint(p));
-     }
-   }
-   
-   qHull(p2, p1, upper, 2);
-   qHull(p1, p2, lower, 1);
-   super.actions.add(new CompleteHull(hull));    
-
+     
+     qHull(p2, p1, upper, 2);
+     qHull(p1, p2, lower, 1);
+     super.actions.add(new CompleteHull(hull));    
+    
   }
   
   
