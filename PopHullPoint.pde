@@ -16,7 +16,7 @@ class PopHullPoint extends Action{
     //sound.play();
     //sound.removeFromCache();
     
-    particles.push(new Particle("Removed",p.getPos(),1000,255,0,0));
+    particles.push(new Particle("REMOVED",p.getPos(),1000,255,0,0));
 
   }
 }

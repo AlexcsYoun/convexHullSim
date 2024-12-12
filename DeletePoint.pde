@@ -7,5 +7,7 @@ class DeletePoint extends Action{
   
   public void simulate(){
     p.delete();
+    particles.push(new Particle("DELETED",p.getPos(),1000,100,0,0));
+
   }
 }

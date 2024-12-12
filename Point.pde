@@ -37,23 +37,28 @@ class Point{
     
     if(status == PointStatus.DELETED){
       strokeWeight(2);
-      stroke(200,0,0);
-      line(pos.x+2,pos.y+2,pos.x-2,pos.y-2);
-      line(pos.x-2,pos.y+2,pos.x+2,pos.y-2);
+      stroke(150,0,0);
+      line(pos.x+3,pos.y+3,pos.x-3,pos.y-3);
+      line(pos.x-3,pos.y+3,pos.x+3,pos.y-3);
     }
     else if(status == PointStatus.COMPARING){
       status = PointStatus.ACTIVE;
       strokeWeight(8);
-      stroke(200);
-      fill(200,0);
+      stroke(10);
+      fill(10,0);
       ellipseMode(CENTER);
       circle(pos.x, pos.y, 15);
       
     }
     else{
+      //strokeWeight(5);
+      //strokeCap(PROJECT);
+      //stroke(10);
+      //point(pos.x, pos.y);
       strokeWeight(2);
-      stroke(200);
-      point(pos.x, pos.y);
+      stroke(50,50,50);
+      line(pos.x+4,pos.y,pos.x-4,pos.y);
+      line(pos.x,pos.y+4,pos.x,pos.y-4);
     }
     
 

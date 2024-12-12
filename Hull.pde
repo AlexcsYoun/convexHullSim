@@ -44,10 +44,10 @@ class Hull{
   void render(){
     strokeWeight(6);
     if(complete){
-      stroke(78,238,104);
+      stroke(227,232,9);
     }
     else{
-      stroke(255);
+      stroke(200);
     }
     if(points.size() > 1){
       PVector prev = points.get(0).getPos();

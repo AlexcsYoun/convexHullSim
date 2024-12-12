@@ -16,28 +16,29 @@ int beepTime = 0;
 
 LinkedList<Particle> particles = new LinkedList<Particle>();
 
-
 ConvexHullAlgorithm alg;
+
+PFont titleFont; 
+
 void settings(){         
   size(screenSize,screenSize);
 }
 
 void setup(){
+  titleFont = loadFont("IBMPlexMono-Bold-48.vlw");
   rand = new Random();
   
-  background(0,0,0);
+  background(250,250,250);
   points = new ArrayList<Point>();
   
   
   PVector centre = new PVector((float)width/2, (float)height/2);
   for( int i =0; i< nPoints; i++){
-    strokeWeight(8);
-    stroke(255);
+
     float mag = distanceVary ?  rand.nextInt(width) *0.45 : width * 0.45;
     PVector np = PVector.random2D().mult(mag);
     np = np.add(centre);
     // note y axis is reversed so orientation is maintained
-    point(np.x,np.y);
     points.add(new Point(np.x, np.y));
   }
   
@@ -45,22 +46,30 @@ void setup(){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
   Sound.volume(0.1);
-  alg = new JarvisMarch();
+  alg = new QuickHull();
   frameRate(120);
-  beep.amp(0.1);  
+  beep.amp(0.07);  
   alg.execute(points);
   
 }
 
 
 void draw(){
+
+  
   if(millis() > beepTime){
     beep.stop();
   }
   else{
     beep.play();
   }
-  background(10,10,10);
+  background(250,250,250);
+  
+  textFont(titleFont,64);
+  fill(220,200);
+  textAlign(CENTER, CENTER);
+  text(alg.toString(),width/2,height/2);
+  fill(255,255);
   alg.render();
   renderPoints();
   renderParticles();
