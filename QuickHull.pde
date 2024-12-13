@@ -6,6 +6,7 @@ class QuickHull extends ConvexHullAlgorithm{
   
   QuickHull(){
     super("QuickHull");
+    super.addHull(hull);
   }
   
   @Override
@@ -83,16 +84,5 @@ class QuickHull extends ConvexHullAlgorithm{
 
     
     
-  }
-  
-  public void render(){
-    hull.render();
-    super.render();
-  }
-  
-  @Override 
-  public void reset(){
-    super.reset();
-    hull.reset(true);
   }
 }

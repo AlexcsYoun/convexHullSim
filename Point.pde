@@ -56,9 +56,10 @@ class Point implements Comparable<Point>{
       //stroke(10);
       //point(pos.x, pos.y);
       strokeWeight(2);
-      stroke(50,50,50);
+      stroke(50,50,50,200);
       line(pos.x+4,pos.y,pos.x-4,pos.y);
       line(pos.x,pos.y+4,pos.x,pos.y-4);
+      stroke(255,255);
     }
     
 

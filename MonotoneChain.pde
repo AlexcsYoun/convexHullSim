@@ -9,6 +9,8 @@ class MonotoneChain extends ConvexHullAlgorithm{
   
   MonotoneChain(){
     super("Monotone Chain");
+    super.addHull(top);
+    super.addHull(bottom);
   }
   
   @Override
@@ -85,21 +87,6 @@ class MonotoneChain extends ConvexHullAlgorithm{
     super.pushAction(new CompleteHull(bottom, false));
     
     
-  }
-  
-  @Override
-  public void render(){
-    top.render();
-    bottom.render();
-    super.render();
-
-  }
-  
-  @Override 
-  public void reset(){
-    super.reset();
-    top.reset(false);
-    bottom.reset(false);
   }
   
 }

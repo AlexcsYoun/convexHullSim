@@ -1,12 +1,13 @@
 /* A Hull, that may be complete or incomplete
 */
 class Hull{
-  private boolean closed;
+  private boolean closed, closedReset;
   private boolean complete = false;
   private ArrayList<Point> points;
   
   Hull(boolean closed){
     this.closed = closed;
+    this.closedReset = closed;
     points = new ArrayList<Point>();
   }
   
@@ -34,9 +35,9 @@ class Hull{
     return p;
   }
   
-  public void reset(boolean closed){
+  public void reset(){
     points.clear();
-    setClosed(closed);
+    setClosed(closedReset);
     setComplete(false);
   }
   

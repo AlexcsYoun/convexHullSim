@@ -48,12 +48,10 @@ void setup(){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
   Sound.volume(0.1);
-  frameRate(120);
+  frameRate(1000);
   beep.amp(0.07);  
   
   alg.execute(points);
-
- 
 }
 
 

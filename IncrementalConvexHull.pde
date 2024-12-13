@@ -6,6 +6,7 @@ class IncrementalConvexHull extends ConvexHullAlgorithm{
   private Hull hull = new Hull(true);
   IncrementalConvexHull(){
     super("Incremental\nConvex Hull");
+    super.addHull(hull);
   }
   
   public void execute(ArrayList<Point> points){
@@ -39,7 +40,7 @@ class IncrementalConvexHull extends ConvexHullAlgorithm{
         
         Orientation orient = new Orientation(p, b, constructHull.getFirst());
         super.pushAction(orient);
-        if(orient.getResult() > 0){
+        if(orient.getResult() >= 0){
           b = constructHull.removeFirst();
           super.pushAction(new PopHullPoint(hull, 0));
         }
@@ -57,7 +58,7 @@ class IncrementalConvexHull extends ConvexHullAlgorithm{
       do {
         Orientation orient = new Orientation(t, p, constructHull.getLast());
         super.pushAction(orient);
-        if(orient.getResult() > 0){
+        if(orient.getResult() >= 0){
           t = constructHull.removeLast();
           super.pushAction(new PopHullPoint(hull));
         }
@@ -82,15 +83,4 @@ class IncrementalConvexHull extends ConvexHullAlgorithm{
     
   }
   
-  @Override
-  public void render(){
-    hull.render();
-    super.render();
-  }
-  
-  @Override
-  public void reset(){
-    super.reset();
-    hull.reset(true);
-  }
 }

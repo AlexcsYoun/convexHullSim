@@ -6,6 +6,7 @@ class GrahamScan extends ConvexHullAlgorithm{
   private Hull hull = new Hull(false);
   GrahamScan(){
     super("Graham Scan");
+    super.addHull(hull);
   }
   
   public void execute(ArrayList<Point> points){
@@ -68,18 +69,5 @@ class GrahamScan extends ConvexHullAlgorithm{
     }
     
     super.pushAction(new CompleteHull(hull));
-  }
-  
-  @Override
-  public void render(){
-    hull.render();
-    super.render();
-    
-  }
-  
-  @Override 
-  public void reset(){
-    super.reset();
-    hull.reset(false);
   }
 }  

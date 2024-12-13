@@ -22,13 +22,13 @@ class Orientation extends Action {
   
   @Override
   public void forward(){
-    float freq = map(c.getPos().x, 0,width,1,700);
+    float freq = map(c.getPos().x, 0,width,50,800);
     Beep(freq,100);
   }
   
   @Override 
   public void backward(){
-    float freq = map(c.getPos().x, width,0,1,700);
+    float freq = map(c.getPos().x, width,0,50,800);
     Beep(freq,100);
   }
   

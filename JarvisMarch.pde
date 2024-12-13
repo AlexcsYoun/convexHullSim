@@ -6,6 +6,7 @@ class JarvisMarch extends ConvexHullAlgorithm{
   
   JarvisMarch(){
     super("Jarvis March");
+    super.addHull(hull);
   }
   
   @Override
@@ -40,18 +41,5 @@ class JarvisMarch extends ConvexHullAlgorithm{
       }
     }
     super.pushAction(new CompleteHull(hull));    
-  }
-  
-  
-  public void render(){
-    hull.render();
-    super.render();
-     //<>// //<>//
-  }
-  
-  @Override 
-  public void reset(){
-    super.reset();
-    hull.reset(false);
-  }
+  } //<>//
 }
