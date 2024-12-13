@@ -38,9 +38,11 @@ abstract class ConvexHullAlgorithm{
   }
   
   public void render(){
-    int i = nextAction % actions.size();
-    Action curAct = actions.get(i);
-    curAct.render();
+    if(nextAction > 0){
+      int i = nextAction-1;
+      Action curAct = actions.get(i);
+      curAct.render();
+    }
   }
   
   public void reset(){

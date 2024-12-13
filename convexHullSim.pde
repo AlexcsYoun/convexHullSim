@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 int nPoints = 100;
 Boolean distanceVary = true;
-ConvexHullAlgorithm alg = new QuickHull();
+ConvexHullAlgorithm alg = new IncrementalConvexHull();
 
 //*******************************
 
@@ -20,7 +20,7 @@ LinkedList<Particle> particles = new LinkedList<Particle>();
 
 PFont titleFont; 
 boolean running = true;
-boolean spaceHeld = false;
+boolean spaceHeld = false, rHeld = false;
 
 void settings(){         
   size(screenSize,screenSize);
@@ -50,7 +50,10 @@ void setup(){
   Sound.volume(0.1);
   frameRate(120);
   beep.amp(0.07);  
+  
   alg.execute(points);
+
+ 
 }
 
 
@@ -82,8 +85,11 @@ void keyPressed(){
     } 
   }
   if(key == 'r'){
-    running = false;
-    alg.reset();
+    if(!rHeld){
+      running = false;
+      alg.reset();
+      rHeld = true;
+    }
   }
   if(key == CODED){
     if(keyCode == LEFT){
@@ -102,7 +108,12 @@ void keyReleased(){
   if(key == ' '){
     spaceHeld = false;
   }
+  if(key == 'r'){
+    rHeld = false;
+  }
 }
+
+
 
 void renderTitle(){
   textFont(titleFont,64);
