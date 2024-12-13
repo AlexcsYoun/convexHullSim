@@ -1,27 +1,25 @@
 import java.util.Random;
 import java.util.LinkedList;
 
+
+//*--Parameters--*//
+
+int nPoints = 100;
+Boolean distanceVary = true;
+ConvexHullAlgorithm alg = new QuickHull();
+
+//*******************************
+
 ArrayList<Point> points;
 Random rand;
-int nPoints = 100;
 int iter = 0;
-Boolean distanceVary = true;
-
-
 int screenSize = 600;
-
 Pulse beep = new Pulse(this);
 int beepTime = 0;
-
-
 LinkedList<Particle> particles = new LinkedList<Particle>();
 
-ConvexHullAlgorithm alg;
-
 PFont titleFont; 
-
 boolean running = true;
-
 boolean spaceHeld = false;
 
 void settings(){         
@@ -50,17 +48,13 @@ void setup(){
     System.out.println(String.format("x: %f y: %f", p.getPos().x, p.getPos().y));
   }
   Sound.volume(0.1);
-  alg = new MonotoneChain();
   frameRate(120);
   beep.amp(0.07);  
   alg.execute(points);
-  
 }
 
 
 void draw(){
-
-  
   if(millis() > beepTime){
     beep.stop();
   }
@@ -68,15 +62,15 @@ void draw(){
     beep.play();
   }
 
-  if(running){
-    alg.forward();
-  }
+
   background(250,250,250);
   renderTitle();
   alg.render();
   renderPoints();
   renderParticles();
-  
+  if(running){
+    alg.forward();
+  }
 
 }
 
@@ -85,8 +79,11 @@ void keyPressed(){
     if(!spaceHeld){
       running = !running;
       spaceHeld = true;
-    }
-    
+    } 
+  }
+  if(key == 'r'){
+    running = false;
+    alg.reset();
   }
   if(key == CODED){
     if(keyCode == LEFT){
@@ -106,9 +103,6 @@ void keyReleased(){
     spaceHeld = false;
   }
 }
-
-
-
 
 void renderTitle(){
   textFont(titleFont,64);

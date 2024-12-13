@@ -89,4 +89,10 @@ class QuickHull extends ConvexHullAlgorithm{
     hull.render();
     super.render();
   }
+  
+  @Override 
+  public void reset(){
+    super.reset();
+    hull.reset(true);
+  }
 }

@@ -13,8 +13,7 @@ class MonotoneChain extends ConvexHullAlgorithm{
   
   @Override
   public void execute(ArrayList<Point> points){
-    Comparator sort = new LexicographicalSort();
-    Collections.sort(points, sort);
+    Collections.sort(points);
     
     ArrayList<Point> constructHull = new ArrayList<Point>();
     
@@ -94,6 +93,13 @@ class MonotoneChain extends ConvexHullAlgorithm{
     bottom.render();
     super.render();
 
+  }
+  
+  @Override 
+  public void reset(){
+    super.reset();
+    top.reset(false);
+    bottom.reset(false);
   }
   
 }

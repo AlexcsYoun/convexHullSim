@@ -34,6 +34,12 @@ class Hull{
     return p;
   }
   
+  public void reset(boolean closed){
+    points.clear();
+    setClosed(closed);
+    setComplete(false);
+  }
+  
   
   void setComplete(boolean complete){
     this.complete = complete;
