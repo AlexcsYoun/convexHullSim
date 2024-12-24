@@ -17,7 +17,6 @@ class PolarSort implements Comparator<Point>{
        return 1;
      }
      
-     
      Orientation orient = new Orientation(origin, left, right);
      alg.pushAction(orient);
      
@@ -26,10 +25,7 @@ class PolarSort implements Comparator<Point>{
        PVector r = PVector.sub(right.getPos(),origin.getPos());
        
        return (l.magSq() < r.magSq()) ? -1 : 1;
-    
      }
-     
      return (orient.getResult() > 0) ? 1: -1;
-     
   }
 }

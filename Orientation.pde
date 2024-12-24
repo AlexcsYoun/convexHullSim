@@ -1,7 +1,7 @@
 import processing.sound.*;
 
 
-class Orientation extends Action {
+class Orientation implements Action {
   private Point a;
   private Point b;
   private Point c;
@@ -56,10 +56,6 @@ class Orientation extends Action {
     line(pB.x, pB.y, pC.x, pC.y);
     
     c.compare();
-    
-    
-    
-  }
-  
+  } 
   
 }

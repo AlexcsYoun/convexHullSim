@@ -1,6 +1,6 @@
 import processing.sound.*;
 
-class CompleteHull extends Action{
+class CompleteHull implements Action{
   private Hull hull;
   private boolean closed;
   private boolean pClosed;

@@ -1,7 +1,7 @@
 import processing.sound.*;
 
 
-class PopHullPoint extends Action{
+class PopHullPoint implements Action{
   private Hull hull;
   private Integer pos;
   private Point p;

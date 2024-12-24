@@ -12,7 +12,9 @@ class MergeHull extends ConvexHullAlgorithm{
   
   }
   
-  private Hull merge(ArrayList<Point> points){
-    
+  private void merge(ArrayList<Point> points){
+    if(points.size() <= 3){
+      
+    }
   }
 }

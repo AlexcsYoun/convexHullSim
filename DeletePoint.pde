@@ -1,4 +1,4 @@
-class DeletePoint extends Action{
+class DeletePoint implements Action{
   private Point p;
   
   DeletePoint(Point p){

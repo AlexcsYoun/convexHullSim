@@ -1,6 +1,6 @@
 import processing.sound.*;
    
-class AddHullPoint extends Action{
+class AddHullPoint implements Action{
   private Hull hull;
   private Point p;
   private Integer pos;

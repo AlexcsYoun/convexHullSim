@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 //*--Parameters--*//
 
-int nPoints = 100;
+int nPoints = 2;
 Boolean distanceVary = true;
 ConvexHullAlgorithm alg = new IncrementalConvexHull();
 

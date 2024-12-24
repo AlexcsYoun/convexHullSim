@@ -28,8 +28,19 @@ abstract class ConvexHullAlgorithm{
   
   public abstract void execute(ArrayList<Point> points);
   
+  public Hull getResult(){
+    return hulls.get(0);
+  }
+  
+  public ArrayList<Action> getActions(){
+  }
+  
   public void pushAction(Action action){
     actions.add(action);
+  }
+  
+  public void pushAction(ArrayList<Action> actions){
+    this.actions.addAll(actions);
   }
   
   public void forward(){
