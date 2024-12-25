@@ -4,7 +4,7 @@ abstract class ConvexHullAlgorithm{
   private int comparisons = 0;
   private String name;
   
-  protected ArrayList<Action> actions;
+  private ArrayList<Action> actions;
   private int nextAction = 0;
   
   
@@ -26,13 +26,18 @@ abstract class ConvexHullAlgorithm{
     hulls.add(hull);
   }
   
-  public abstract void execute(ArrayList<Point> points);
-  
-  public Hull getResult(){
-    return hulls.get(0);
+  public void addHull(ArrayList<Hull> hulls){
+    this.hulls.addAll(hulls);
   }
   
+  public ArrayList<Hull> getHulls(){
+    return hulls;
+  }
+  public abstract void execute(ArrayList<Point> points);
+  
+    
   public ArrayList<Action> getActions(){
+    return actions;
   }
   
   public void pushAction(Action action){
@@ -41,6 +46,11 @@ abstract class ConvexHullAlgorithm{
   
   public void pushAction(ArrayList<Action> actions){
     this.actions.addAll(actions);
+  }
+  
+  public void pushAlgorithm(ConvexHullAlgorithm alg){
+    pushAction(alg.getActions());
+    addHull(alg.getHulls());
   }
   
   public void forward(){
