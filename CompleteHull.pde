@@ -1,6 +1,6 @@
 import processing.sound.*;
 
-class CompleteHull extends Action{
+class CompleteHull implements Action{
   private Hull hull;
   private boolean closed;
   private boolean pClosed;
@@ -18,7 +18,7 @@ class CompleteHull extends Action{
   
   
   @Override
-  public void next(){
+  public void forward(){
     pClosed = hull.getClosed();
     hull.setComplete(true);
     hull.setClosed(closed);
@@ -28,7 +28,7 @@ class CompleteHull extends Action{
   
   
   @Override
-  public void back(){
+  public void backward(){
     hull.setComplete(false);
     hull.setClosed(pClosed);
     sound.pause();

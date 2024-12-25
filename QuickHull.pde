@@ -36,7 +36,7 @@ class QuickHull extends ConvexHullAlgorithm{
      
      qHull(p2, p1, upper, 2);
      qHull(p1, p2, lower, 1);
-     super.pushAction(new CompleteHull(hull));
+     super.actions.add(new CompleteHull(hull));    
     
   }
   
@@ -61,10 +61,9 @@ class QuickHull extends ConvexHullAlgorithm{
     ArrayList<Point> right= new ArrayList<Point>();
     for(Point p:points){
      Orientation orientA = new Orientation(a, selected, p);
-     super.pushAction(orientA);
-
+     super.actions.add(orientA);
      Orientation orientB = new Orientation(selected, b, p);
-     super.pushAction(orientB);
+     super.actions.add(orientB);
      if(orientA.getResult() < 0){
        left.add(p);
      }

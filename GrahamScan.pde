@@ -4,7 +4,6 @@ import java.util.Comparator;
 class GrahamScan extends ConvexHullAlgorithm{
   
   private Hull hull = new Hull(false);
-  private ArrayList<Point> constructHull;
   GrahamScan(){
     super("Graham Scan");
     super.addHull(hull);
@@ -33,7 +32,7 @@ class GrahamScan extends ConvexHullAlgorithm{
       }
     }
     
-    constructHull = new ArrayList<Point>();
+    ArrayList<Point> constructHull = new ArrayList<Point>();
     
     for(Point p: points){
       if(p.getStatus() != PointStatus.DELETED){
@@ -70,13 +69,5 @@ class GrahamScan extends ConvexHullAlgorithm{
     }
     
     super.pushAction(new CompleteHull(hull));
-  }
-  
-  public ArrayList<Point> getResult(){
-    return constructHull;
-  }
-  
-  public Hull getHull(){
-    return hull;
   }
 }  

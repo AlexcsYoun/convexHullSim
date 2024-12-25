@@ -19,9 +19,6 @@ class Hull{
     points.add(p);
   }
   
-  void pushPoint(ArrayList<Point> points){
-    this.points.addAll(points);
-  }
   void pushPoint(Point p, int pos){
     points.add(pos, p);
   }

@@ -1,16 +1,16 @@
-abstract class ConvexHullAlgorithm implements Runnable{
+abstract class ConvexHullAlgorithm{
   
   private ArrayList<Hull> hulls = new ArrayList<Hull>();
   private int comparisons = 0;
   private String name;
   
-  private ArrayList<Runnable> steps;
-  private int backStep = -1;
-  private int frontStep = 0;
+  protected ArrayList<Action> actions;
+  private int nextAction = 0;
+  
   
   
   ConvexHullAlgorithm(String name){
-    steps = new ArrayList<Runnable>();
+    actions = new ArrayList<Action>();
     this.name = name;
   }
   
@@ -26,56 +26,47 @@ abstract class ConvexHullAlgorithm implements Runnable{
     hulls.add(hull);
   }
   
-  public ArrayList<Hull> getHulls(){
-    return hulls;
-  }
-  
   public abstract void execute(ArrayList<Point> points);
   
-
-  public void pushAction(Action step){
-    steps.add(step);
-  }
-
-  
-  public void pushAction(ArrayList<Action> steps){
-    this.steps.addAll(steps);
+  public Hull getResult(){
+    return hulls.get(0);
   }
   
-  public void pushAlgorithm(ConvexHullAlgorithm alg){
+  public ArrayList<Action> getActions(){
   }
   
-  public boolean forward(){
-    if(frontStep < steps.size()){
-      backStep = frontStep;
-      
-      Runnable step = steps.get(frontStep);
-      boolean fin = step.forward();
-      
-      if(fin){frontStep++;}  
+  public void pushAction(Action action){
+    actions.add(action);
+  }
+  
+  public void pushAction(ArrayList<Action> actions){
+    this.actions.addAll(actions);
+  }
+  
+  public void forward(){
+    if(nextAction < actions.size()){
+      Action nextAct = actions.get(nextAction);
+      nextAct.forward();
+      nextAction++;
+    }    
+  }
+  
+  public void backward(){
+    if(nextAction > 0){
+        Action curAct = actions.get(nextAction-1);
+        curAct.backward();
+        nextAction--;      
     }
-    
-    return frontStep >= steps.size();
-    
-  }
-  
-  public boolean backward(){
-    if(backStep >= 0){
-        frontStep = backStep;
-        Runnable step = steps.get(backStep);
-        boolean fin = step.backward();
-        if(fin){backStep++;}
-    }
-    return backStep < 0;
   }
   
   public void render(){
     for(Hull h: hulls){
       h.render();
     }
-    if(backStep > 0){
-      Runnable step = steps.get(backStep);
-      step.render();
+    if(nextAction > 0){
+      int i = nextAction-1;
+      Action curAct = actions.get(i);
+      curAct.render();
     }
   }
   
@@ -83,8 +74,7 @@ abstract class ConvexHullAlgorithm implements Runnable{
     for(Hull h: hulls){
       h.reset();
     }
-    backStep =-1;
-    frontStep = 0;// time travel doesn't reset output of finished() and started() of steps
+    nextAction = 0;
   }
   
     
