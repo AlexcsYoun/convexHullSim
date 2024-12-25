@@ -1,7 +1,7 @@
 import processing.sound.*;
 
 
-class PopHullPoint implements Action{
+class PopHullPoint extends Action{
   private Hull hull;
   private Integer pos;
   private Point p;
@@ -16,7 +16,7 @@ class PopHullPoint implements Action{
   }
   
   
-  public void forward(){
+  public void next(){
     if(pos != null){
       p = hull.popPoint(pos);
     }
@@ -32,7 +32,7 @@ class PopHullPoint implements Action{
 
   }
   
-  public void backward(){
+  public void back(){
     if(pos != null){
       hull.pushPoint(p, pos);
     }

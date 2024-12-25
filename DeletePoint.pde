@@ -1,4 +1,4 @@
-class DeletePoint implements Action{
+class DeletePoint extends Action{
   private Point p;
   
   DeletePoint(Point p){
@@ -6,13 +6,13 @@ class DeletePoint implements Action{
   }
   
   @Override
-  public void forward(){
+  public void next(){
     p.delete();
     particles.push(new Particle("DELETED",p.getPos(),1000,100,0,0));
-
   }
+  
   @Override
-  public void backward(){
+  public void back(){
     p.reset();
   }
   

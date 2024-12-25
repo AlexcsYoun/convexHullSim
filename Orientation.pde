@@ -1,7 +1,7 @@
 import processing.sound.*;
 
 
-class Orientation implements Action {
+class Orientation extends Action {
   private Point a;
   private Point b;
   private Point c;
@@ -21,13 +21,14 @@ class Orientation implements Action {
   }
   
   @Override
-  public void forward(){
+  public void next(){
+    super.forward();
     float freq = map(c.getPos().x, 0,width,50,800);
     Beep(freq,100);
   }
   
   @Override 
-  public void backward(){
+  public void back(){
     float freq = map(c.getPos().x, width,0,50,800);
     Beep(freq,100);
   }

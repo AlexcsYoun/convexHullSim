@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 //*--Parameters--*//
 
-int nPoints = 2;
+int nPoints = 100;
 Boolean distanceVary = true;
-ConvexHullAlgorithm alg = new IncrementalConvexHull();
+ConvexHullAlgorithm alg = new MonotoneChain();
 
 //*******************************
 
